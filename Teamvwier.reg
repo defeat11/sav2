@@ -16,7 +16,7 @@ Windows Registry Editor Version 5.00
 "DeactivateSessionRecordingPauseStop"=dword:00000000
 "AutorecordRemoteControlEnforced"=dword:00000000
 "Security_WinLogin"=dword:00000002
-"Security_PasswordStrength"=dword:00000001
+"Security_PasswordStrength"=dword:00000003
 "Blacklist"=hex(7):00,00
 "Whitelist"=hex(7):00,00
 "BlacklistBuddy"=hex(7):00,00
@@ -25,8 +25,8 @@ Windows Registry Editor Version 5.00
 "WhitelistCompany"=hex(7):00,00
 "BlacklistBuddyAccountID"=hex(3):88,44,d7,0a,b2,96,2a,3d,63,16,3c,ff,e4,15,04,fb
 "WhitelistBuddyAccountID"=hex(3):88,44,d7,0a,b2,96,2a,3d,63,16,3c,ff,e4,15,04,fb
-"BlacklistCompanyID"=hex(3):9e,07,a9,36,60,28,b4,32,e5,4e,33,c6,1f,31,c0,c9,50,0d,5d,3b,6e,74,d4,a8,11,24,79,45,6c,ab,54,bd
-"WhitelistCompanyID"=hex(3):6b,9c,d4,ff,26,2d,f5,8f,44,61,35,38,88,61,d3,85,c6,e1,c7,d6,f2,e1,bb,43,8a,93,17,31,f3,2f,59,0f
+"BlacklistCompanyID"=hex(3):be,84,2f,c3,41,d5,c4,7a,41,c7,df,cc,b0,f8,e9,f3,ce,0d,f5,26,b5,64,db,4e,fb,14,a6,37,47,82,cb,de
+"WhitelistCompanyID"=hex(3):2d,05,03,0d,b6,77,13,26,99,af,92,3f,69,6f,42,ae,36,16,d0,85,28,17,80,df,5b,2a,65,57,00,15,7f,5e
 "UseWhitelist"=dword:00000000
 "DisableTFAForConnections"=dword:00000000
 "Apply_Blacklist_Or_Whitelist_On_Meeting"=dword:00000000
