@@ -1,1 +1,1 @@
-powershell -ExecutionPolicy Bypass -File c:\me.ps1
+powershell -ExecutionPolicy Bypass -File %userprofile%\Desktop\me.ps1
