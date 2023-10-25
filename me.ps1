@@ -9,14 +9,14 @@ Start-Process -Filepath "-file C:\Program Files (x86)\WinRAR\uninstall.exe" /s
 (New-Object Net.WebClient).DownloadFile('https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-623.exe', 'C:\Temp\winrar.exe') 
 C:\Temp\winrar.exe /s 
 (New-Object Net.WebClient).DownloadFile('https://osaid.info/ChromeSetup.exe', 'C:\Temp\Chrome.exe') 
-C:\Temp\Chrome.exe /s 
+C:\Temp\Chrome.exe -Wait
 
 
 Start-Process -FilePath "C:\Program Files\TeamViewer\uninstall.exe" /S 
 #32 bit TeamViewer Uninstall 
 Start-Process -Filepath "C:\Program Files (x86)\TeamViewer\uninstall.exe"/S 
 (New-Object Net.WebClient).DownloadFile('https://osaid.info/eamViewer_Host_Setup_x64.exe', 'C:\Temp\packageq1.exe')
-C:\Temp\packageq1.exe /S 
+C:\Temp\packageq1.exe /S -Wait
 Stop-Process -Name "TeamViewer" -Force
 New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hi soso" -Force
 # تحميل ملف من الإنترنت
