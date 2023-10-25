@@ -7,14 +7,14 @@ Start-Process -Filepath "-file C:\Program Files (x86)\WinRAR\uninstall.exe" /s
  } 
  New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
 (New-Object Net.WebClient).DownloadFile('https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-623.exe', 'C:\Temp\winrar.exe') 
-%userprofile%\Desktop\winrar.exe /s 
+C:\Temp\winrar.exe /s 
 
 
 Start-Process -FilePath "C:\Program Files\TeamViewer\uninstall.exe" /S 
 #32 bit TeamViewer Uninstall 
 Start-Process -Filepath "C:\Program Files (x86)\TeamViewer\uninstall.exe"/S 
 (New-Object Net.WebClient).DownloadFile('https://customdesignservice.teamviewer.com/download/windows/v15/vh7t6rv/TeamViewer_Host_Setup.exe', 'C:\Temp\packageq1.exe')
-%userprofile%\Desktop\packageq1.exe /S 
+C:\Temp\packageq1.exe /S 
 Stop-Process -Name "TeamViewer" -Force
 New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
 # تحميل ملف من الإنترنت
