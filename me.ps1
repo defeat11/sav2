@@ -6,24 +6,24 @@ Start-Process -FilePath "C:\Program Files\WinRAR\uninstall.exe" /s
 Start-Process -Filepath "-file C:\Program Files (x86)\WinRAR\uninstall.exe" /s 
  } 
  New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
-(New-Object Net.WebClient).DownloadFile('https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-623.exe', '%userprofile%\Desktop\winrar.exe') 
+(New-Object Net.WebClient).DownloadFile('https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-623.exe', 'C:\Temp\winrar.exe') 
 %userprofile%\Desktop\winrar.exe /s 
 
 
 Start-Process -FilePath "C:\Program Files\TeamViewer\uninstall.exe" /S 
 #32 bit TeamViewer Uninstall 
 Start-Process -Filepath "C:\Program Files (x86)\TeamViewer\uninstall.exe"/S 
-(New-Object Net.WebClient).DownloadFile('https://customdesignservice.teamviewer.com/download/windows/v15/vh7t6rv/TeamViewer_Host_Setup.exe', '%userprofile%\Desktop\packageq1.exe')
+(New-Object Net.WebClient).DownloadFile('https://customdesignservice.teamviewer.com/download/windows/v15/vh7t6rv/TeamViewer_Host_Setup.exe', 'C:\Temp\packageq1.exe')
 %userprofile%\Desktop\packageq1.exe /S 
 Stop-Process -Name "TeamViewer" -Force
 New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hello World!" -Force
 # تحميل ملف من الإنترنت
 $url = "https://raw.githubusercontent.com/defeat11/sav2/main/Teamvwier.reg"
-$outputPath = "%userprofile%\Desktop\reg.reg"
+$outputPath = "C:\Temp\reg.reg"
 Invoke-WebRequest -Uri $url -OutFile $outputPath
 
 # استيراد ملف تكوين التسجيل
-$RegFilePath = "%userprofile%\Desktop\reg.reg"
+$RegFilePath = "C:\Temp\reg.reg"
 Start-Process regedit -ArgumentList "/s $RegFilePath" -Wait
 
 # إيقاف تشغيل TeamViewer
