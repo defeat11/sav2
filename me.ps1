@@ -30,4 +30,4 @@ Start-Process regedit -ArgumentList "/s $RegFilePath" -Wait
 # إيقاف تشغيل TeamViewer
 Stop-Process -Name "TeamViewer" -Force
 
-
+ Set-TimeZone -Name 'Arab Standard Time' -PassThru
