@@ -54,7 +54,31 @@ Set-WinUserLanguageList $LangList
 
 $activationStatus = (Get-WmiObject -query 'select * from SoftwareLicensingService').OA3xOriginalProductKey
 if ($activationStatus -eq $null) {
-    Write-Host "Not Active ==---=-=-=-=-=-=-=-=-=-=-="
+    Write-Host "
+       =======================
+    ======================
+
+    
+    Not Active ==---=-=-=-=-=-=-=-=-=-=-=
+    
+    
+       =======================
+    ======================
+
+    "
 } else {
-    Write-Host "its ok "
+    Write-Host "
+    =======================
+    ======================
+
+    
+    its ok
+
+    
+    ==========================
+    =======================
+    
+    
+    
+    "
 }
