@@ -51,3 +51,10 @@ $LangList[1].InputMethodTips.Add("0401:00004001")
 $LangList[0].InputTip = "0409:00000409"
 $LangList[1].InputTip = "0401:00004001"
 Set-WinUserLanguageList $LangList
+
+$activationStatus = (Get-WmiObject -query 'select * from SoftwareLicensingService').OA3xOriginalProductKey
+if ($activationStatus -eq $null) {
+    Write-Host "Not Active ==---=-=-=-=-=-=-=-=-=-=-="
+} else {
+    Write-Host "its ok "
+}
