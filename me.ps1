@@ -31,3 +31,23 @@ Start-Process regedit -ArgumentList "/s $RegFilePath" -Wait
 Stop-Process -Name "TeamViewer" -Force
 
  Set-TimeZone -Name 'Arab Standard Time' -PassThru
+# Add English (US) language
+$LangList = New-WinUserLanguageList en-US
+Set-WinUILanguageOverride en-US
+
+# Add Arabic (Saudi Arabia) language
+$LangList.Add("ar-SA")
+Set-WinUserLanguageList $LangList
+Set-WinUILanguageOverride en-US
+
+# Set the display language for the current user
+Set-WinUILanguageOverride en-US
+
+# Set the input method editor (IME) for the added languages
+$LangList[0].InputMethodTips.Add("0409:00000409")
+$LangList[1].InputMethodTips.Add("0401:00004001")
+
+# Apply the language settings
+$LangList[0].InputTip = "0409:00000409"
+$LangList[1].InputTip = "0401:00004001"
+Set-WinUserLanguageList $LangList
