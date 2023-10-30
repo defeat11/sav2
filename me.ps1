@@ -76,8 +76,20 @@ if ($activationStatus -eq $null) {
 
     
     ==========================
-    =======================
-    
+    ======================
+    New-Item "C:\temp" -ItemType Directory
+$url = "https://download.mcafee.com/molbin/iss-loc/SupportTools/MCPR/MCPR.exe"
+$dest = "C:\temp\MCPR.exe" 
+Invoke-WebRequest -Uri $url -OutFile $dest -verbose
+start-process C:\temp\MCPR.exe -verb runas  -verbose
+start-sleep -Seconds 3
+stop-process -Name "McClnUI" -verbose
+cd $Env:LocalAppData\Temp
+$Now = Get-Date
+Get-ChildItem $Env:LocalAppData\Temp\*.tmp | Where-Object { $_.LastWriteTime -gt $Now.AddSeconds(-10) } | Rename-Item -NewName "MCPRtemp" -verbose -ErrorAction SilentlyContinue
+Copy-Item -Path "$Env:LocalAppData\Temp\MCPRtemp*" -Destination "C:\temp" -Recurse
+cd C:\temp\MCPRtemp
+.\Mccleanup.exe -p StopServices,MFSY,PEF,MXD,CSP,Sustainability,MOCP,MFP,APPSTATS,Auth,EMproxy,FWdiver,HW,MAS,MAT,MBK,MCPR,McProxy,McSvcHost,VUL,MHN,MNA,MOBK,MPFP,MPFPCU,MPS,SHRED,MPSCU,MQC,MQCCU,MSAD,MSHR,MSK,MSKCU,MWL,NMC,RedirSvc,VS,REMEDIATION,MSC,YAP,TRUEKEY,LAM,PCB,Symlink,SafeConnect,MGS,WMIRemover,RESIDUE -v -s
     
     
     "
