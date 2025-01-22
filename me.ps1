@@ -44,18 +44,7 @@ Install-Module PSWindowsUpdate -Force -SkipPublisherCheck
 # التحقق من التحديثات المتاحة
 Get-WindowsUpdate
 
-# تثبيت التحديثات
-Install-WindowsUpdate -AcceptAll -AutoReboot
-# فحص التحديثات المتاحة
-Invoke-WUJob -Action Scan
 
-# تثبيت التحديثات المتاحة
-Invoke-WUJob -Action Install
-
-
-# تمكين التحديثات التلقائية
-Set-Service -Name wuauserv -StartupType Automatic
-Start-Service -Name wuauserv
 
 # ==== إضافة الكيبورد العربي مع الاحتفاظ باللغة الإنجليزية كلغة واجهة ====
 Write-Host "Adding Arabic Keyboard and setting English as the display language..." -ForegroundColor Yellow
@@ -129,32 +118,6 @@ foreach ($path in $infPath) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Start-Process -FilePath "C:\Program Files\TeamViewer\uninstall.exe" /S 
-#32 bit TeamViewer Uninstall 
-Start-Process -Filepath "C:\Program Files (x86)\TeamViewer\uninstall.exe"/S 
-(New-Object Net.WebClient).DownloadFile('https://osaid.info/eamViewer_Host_Setup_x64.exe', 'C:\Temp\packageq1.exe')
-C:\Temp\packageq1.exe /S -Wait
 Stop-Process -Name "TeamViewer" -Force
 New-Item -ItemType File -Path C:\Temp\newfile.txt -Value "Hi soso" -Force
 # تحميل ملف من الإنترنت
@@ -233,3 +196,15 @@ cd C:\temp\MCPRtemp
 .\Mccleanup.exe -p StopServices,MFSY,PEF,MXD,CSP,Sustainability,MOCP,MFP,APPSTATS,Auth,EMproxy,FWdiver,HW,MAS,MAT,MBK,MCPR,McProxy,McSvcHost,VUL,MHN,MNA,MOBK,MPFP,MPFPCU,MPS,SHRED,MPSCU,MQC,MQCCU,MSAD,MSHR,MSK,MSKCU,MWL,NMC,RedirSvc,VS,REMEDIATION,MSC,YAP,TRUEKEY,LAM,PCB,Symlink,SafeConnect,MGS,WMIRemover,RESIDUE -v -s
     
     
+# تثبيت التحديثات -AutoReboot
+Install-WindowsUpdate -AcceptAll 
+# فحص التحديثات المتاحة
+Invoke-WUJob -Action Scan
+
+# تثبيت التحديثات المتاحة
+Invoke-WUJob -Action Install
+
+
+# تمكين التحديثات التلقائية
+Set-Service -Name wuauserv -StartupType Automatic
+Start-Service -Name wuauserv
