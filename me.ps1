@@ -67,6 +67,16 @@ Start-Process -FilePath $sevenZipInstaller -ArgumentList "/S" -Wait
 # تنظيف الملفات المؤقتة
 Remove-Item -Path $tempPath -Recurse -Force
 
+
+
+# TeamViewer
+$sevenZipUrl = "https://download.teamviewer.com/download/TeamViewer_Host_Setup_x64.exe" # استبدل بالرابط الصحيح إذا كنت تريد نسخة 32 بت
+$sevenZipInstaller = "$tempPath\TeamViewer.exe"
+Download-File -url $sevenZipUrl -outputPath $TeamViewer1
+Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
+
+
+
 Write-Host "Installation Completed Successfully!"
 # إعداد المتغيرات
 $url = "https://ftp.hp.com/pub/softlib/software13/printers/UPD/upd-pcl6-x64-7.3.0.25919.zip"
