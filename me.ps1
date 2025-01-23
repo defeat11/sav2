@@ -1,10 +1,17 @@
+# مسار مؤقت
+$tempPath = $env:TEMP
 
-# TeamViewer
+# رابط التنزيل
 $sevenZipUrl = "https://download.teamviewer.com/download/TeamViewer_Host_Setup_x64.exe" # استبدل بالرابط الصحيح إذا كنت تريد نسخة 32 بت
-$TeamViewer1 = "$tempPath\TeamViewer.exe"
-Download-File -url $sevenZipUrl -outputPath $TeamViewer1
-Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
 
+# مسار الحفظ
+$TeamViewer1 = "$tempPath\TeamViewer.exe"
+
+# تنزيل الملف باستخدام Invoke-WebRequest
+Invoke-WebRequest -Uri $sevenZipUrl -OutFile $TeamViewer1
+
+# تشغيل المثبّت بصمت
+Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
 
 
 if ((gwmi win32_operatingsystem | select osarchitecture).osarchitecture -eq "64-bit")
@@ -192,7 +199,8 @@ Invoke-WUJob -Action Install
 # تمكين التحديثات التلقائية
 Set-Service -Name wuauserv -StartupType Automatic
 Start-Service -Name wuauserv
-$officeSetupUrl = "https://c2rsetup.officeapps.live.com/c2r/download.aspx?productReleaseID=O365HomePremRetail&platform=X86&language=en-US&version=O15GA&source=O15OLSOMEX"  # استبدل برابط صحيح لأداة التثبيت
+#$officeSetupUrl = "https://c2rsetup.officeapps.live.com/c2r/download.aspx?productReleaseID=O365HomePremRetail&platform=X86&language=en-US&version=O15GA&source=O15OLSOMEX"  # استبدل برابط صحيح لأداة التثبيت
+$officeSetupUrl = "https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365ProPlusRetail&platform=x64&language=en-us&version=O16GA"
 $installerPath = "C:\Temp\OfficeSetup.exe"
 
 # ==== إنشاء المجلد المؤقت ====
