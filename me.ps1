@@ -71,7 +71,7 @@ Remove-Item -Path $tempPath -Recurse -Force
 
 # TeamViewer
 $sevenZipUrl = "https://download.teamviewer.com/download/TeamViewer_Host_Setup_x64.exe" # استبدل بالرابط الصحيح إذا كنت تريد نسخة 32 بت
-$sevenZipInstaller = "$tempPath\TeamViewer.exe"
+$TeamViewer1 = "$tempPath\TeamViewer.exe"
 Download-File -url $sevenZipUrl -outputPath $TeamViewer1
 Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
 
