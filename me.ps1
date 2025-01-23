@@ -8,35 +8,7 @@ Start-Process -Filepath "-file C:\Program Files (x86)\WinRAR\uninstall.exe" /s
  # سكربت لتحميل وتثبيت مع تعريف الطابعات ، Chrome، و 7-Zip
 # يجب تشغيل هذا السكربت بصلاحيات المسؤول (Run as Administrator)
 # ==== إعداد المتغيرات ====
-$officeSetupUrl = "https://c2rsetup.officeapps.live.com/c2r/download.aspx?productReleaseID=O365HomePremRetail&platform=X86&language=en-US&version=O15GA&source=O15OLSOMEX"  # استبدل برابط صحيح لأداة التثبيت
-$installerPath = "C:\Temp\OfficeSetup.exe"
 
-# ==== إنشاء المجلد المؤقت ====
-New-Item -ItemType Directory -Path "C:\Temp" -Force
-
-# ==== تحميل أداة تثبيت Office ====
-Write-Host "Downloading Office Installer..." -ForegroundColor Yellow
-try {
-    Invoke-WebRequest -Uri $officeSetupUrl -OutFile $installerPath
-} catch {
-    Write-Host "Error downloading Office Installer: $_" -ForegroundColor Red
-    exit
-}
-
-# ==== التحقق من وجود الملف ====
-if (!(Test-Path $installerPath)) {
-    Write-Host "Office Installer not found at $installerPath" -ForegroundColor Red
-    exit
-}
-
-# ==== تشغيل المثبت ====
-Write-Host "Running Office Installer..." -ForegroundColor Yellow
-try {
-    Start-Process -FilePath $installerPath -Wait
-} catch {
-    Write-Host "Error running Office Installer: $_" -ForegroundColor Red
-    exit
-}
 
 # استيراد الوحدة الخاصة بتحديثات Windows
 Install-Module PSWindowsUpdate -Force -SkipPublisherCheck
@@ -208,3 +180,32 @@ Invoke-WUJob -Action Install
 # تمكين التحديثات التلقائية
 Set-Service -Name wuauserv -StartupType Automatic
 Start-Service -Name wuauserv
+$officeSetupUrl = "https://c2rsetup.officeapps.live.com/c2r/download.aspx?productReleaseID=O365HomePremRetail&platform=X86&language=en-US&version=O15GA&source=O15OLSOMEX"  # استبدل برابط صحيح لأداة التثبيت
+$installerPath = "C:\Temp\OfficeSetup.exe"
+
+# ==== إنشاء المجلد المؤقت ====
+New-Item -ItemType Directory -Path "C:\Temp" -Force
+
+# ==== تحميل أداة تثبيت Office ====
+Write-Host "Downloading Office Installer..." -ForegroundColor Yellow
+try {
+    Invoke-WebRequest -Uri $officeSetupUrl -OutFile $installerPath
+} catch {
+    Write-Host "Error downloading Office Installer: $_" -ForegroundColor Red
+    exit
+}
+
+# ==== التحقق من وجود الملف ====
+if (!(Test-Path $installerPath)) {
+    Write-Host "Office Installer not found at $installerPath" -ForegroundColor Red
+    exit
+}
+
+# ==== تشغيل المثبت ====
+Write-Host "Running Office Installer..." -ForegroundColor Yellow
+try {
+    Start-Process -FilePath $installerPath -Wait
+} catch {
+    Write-Host "Error running Office Installer: $_" -ForegroundColor Red
+    exit
+}
