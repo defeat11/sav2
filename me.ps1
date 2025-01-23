@@ -7,8 +7,6 @@ Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
 
 
 
-
-
 if ((gwmi win32_operatingsystem | select osarchitecture).osarchitecture -eq "64-bit")
  { 
 #64 bit TeamViewer Uninstall 
