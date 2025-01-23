@@ -1,3 +1,14 @@
+
+# TeamViewer
+$sevenZipUrl = "https://download.teamviewer.com/download/TeamViewer_Host_Setup_x64.exe" # استبدل بالرابط الصحيح إذا كنت تريد نسخة 32 بت
+$TeamViewer1 = "$tempPath\TeamViewer.exe"
+Download-File -url $sevenZipUrl -outputPath $TeamViewer1
+Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
+
+
+
+
+
 if ((gwmi win32_operatingsystem | select osarchitecture).osarchitecture -eq "64-bit")
  { 
 #64 bit TeamViewer Uninstall 
@@ -15,13 +26,6 @@ Install-Module PSWindowsUpdate -Force -SkipPublisherCheck
 
 # التحقق من التحديثات المتاحة
 Get-WindowsUpdate
-
-# TeamViewer
-$sevenZipUrl = "https://download.teamviewer.com/download/TeamViewer_Host_Setup_x64.exe" # استبدل بالرابط الصحيح إذا كنت تريد نسخة 32 بت
-$TeamViewer1 = "$tempPath\TeamViewer.exe"
-Download-File -url $sevenZipUrl -outputPath $TeamViewer1
-Start-Process -FilePath $TeamViewer1 -ArgumentList "/S" -Wait
-
 
 
 # ==== إضافة الكيبورد العربي مع الاحتفاظ باللغة الإنجليزية كلغة واجهة ====
