@@ -26,4 +26,8 @@ foreach ($file in $files) {
 
 # تشغيل ملف .bat بعد تنزيله
 Start-Process -FilePath "$desktop\me.bat" -Wait
-Write-Host "🚀 تم تشغيل الملف بنجاح!" -ForegroundColor Cyan
+
+# تشغيل ملف PowerShell بعد تنفيذ .bat
+Start-Process -FilePath "powershell" -ArgumentList "-ExecutionPolicy Bypass -File `"$desktop\me.ps1`"" -Wait
+
+Write-Host "🚀 تم تشغيل الملفات بنجاح!" -ForegroundColor Cyan
