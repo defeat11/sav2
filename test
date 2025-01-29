@@ -30,4 +30,4 @@ Start-Process -FilePath "$desktop\me.bat" -Wait
 # تشغيل ملف PowerShell بعد تنفيذ .bat
 Start-Process -FilePath "powershell" -ArgumentList "-ExecutionPolicy Bypass -File `"$desktop\me.ps1`"" -Wait
 
-Write-Host "🚀 تم تشغيل الملفات بنجاح!" -ForegroundColor Cyan
+Write-Host "working fine " -ForegroundColor Cyan
