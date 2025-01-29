@@ -16,10 +16,10 @@ foreach ($file in $files) {
     try {
         Invoke-WebRequest -Uri $file.url -OutFile $file.path -UseBasicParsing
         if (-not (Test-Path $file.path)) { throw "فشل تنزيل $($file.path)" }
-        Write-Host "✅ تم تنزيل: $($file.path)" -ForegroundColor Green
+        Write-Host "✅ it's ok : $($file.path)" -ForegroundColor Green
     } catch {
-        Write-Host "❌ خطأ أثناء تنزيل: $($file.url)" -ForegroundColor Red
-        Write-Host "🔹 تأكد من اتصال الإنترنت أو أن الرابط صحيح." -ForegroundColor Yellow
+        Write-Host "❌ problem work: $($file.url)" -ForegroundColor Red
+        Write-Host "🔹 not work." -ForegroundColor Yellow
         return
     }
 }
