@@ -14,3 +14,14 @@ gpupdate /force
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "Deny_all" -Value 1
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\USBSTOR" -Name "Start" -Value 4
 gpupdate /force
+
+
+
+#eployment Image Servicing and Management
+DISM /Online /Add-Capability /CapabilityName:WirelessDisplay.Connect~~~~0.0.1.0
+
+#✅ للتحقق مما إذا كانت الميزة مثبتة بالفعل:
+
+
+
+DISM /Online /Get-Capabilities | Findstr "WirelessDisplay"
